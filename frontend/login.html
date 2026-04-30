@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Energy Monitor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container" style="max-width:400px;">
+  <div class="card">
+    <div class="card-title">🔐 Login</div>
+
+    <input type="email" id="login-email" placeholder="Email">
+    <input type="password" id="login-password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p class="message" id="login-msg"></p>
+
+    <p style="margin-top:10px; font-size:13px;">
+      Don't have an account?
+      <a href="register.html">Register</a>
+    </p>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

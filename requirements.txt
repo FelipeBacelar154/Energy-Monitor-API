@@ -1,0 +1,15 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+sqlalchemy==2.0.23
+pydantic==2.5.0
+python-dotenv==1.0.0
+reportlab==4.4.10
+pillow==12.2.0
+
+# 🗄️ PostgreSQL
+psycopg2-binary==2.9.9
+
+# 🔐 Auth
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-jose==3.3.0

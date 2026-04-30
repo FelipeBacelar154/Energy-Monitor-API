@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Monitor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="logo">⚡ Energy<span>Monitor</span></span>
+    <span class="topbar-sub">Industrial Energy Management</span>
+  </div>
+
+  <div class="container">
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Equipments</div>
+        <div class="stat-val purple" id="stat-equipments">--</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Consumption</div>
+        <div class="stat-val yellow" id="stat-consumption">--</div>
+        <div class="stat-unit">kWh</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Estimated Cost</div>
+        <div class="stat-val green" id="stat-cost">--</div>
+        <div class="stat-unit">BRL</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Top Consumer</div>
+        <div class="stat-val red" id="stat-top">--</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+
+      <!-- ADD EQUIPMENT -->
+      <div class="card">
+        <div class="card-title">➕ Add Equipment</div>
+        <input type="text" id="eq-name" placeholder="Equipment name" />
+        <input type="number" id="eq-power" placeholder="Power (kW)" step="0.1" />
+        <input type="text" id="eq-location" placeholder="Location (ex: Sector A)" />
+        <input type="text" id="eq-description" placeholder="Description (optional)" />
+        <button onclick="addEquipment()">Add Equipment</button>
+        <p id="eq-message" class="message"></p>
+      </div>
+
+      <!-- ADD READING -->
+      <div class="card">
+        <div class="card-title">📊 Add Reading</div>
+        <select id="reading-equipment">
+          <option value="">Select equipment...</option>
+        </select>
+        <input type="number" id="reading-consumption" placeholder="Consumption (kWh)" step="0.1" />
+        <input type="number" id="reading-voltage" placeholder="Voltage (V) - optional" step="0.1" />
+        <input type="number" id="reading-current" placeholder="Current (A) - optional" step="0.1" />
+        <button onclick="addReading()">Add Reading</button>
+        <p id="reading-message" class="message"></p>
+      </div>
+
+    </div>
+
+    <!-- EQUIPMENTS LIST -->
+    <div class="card">
+      <div class="card-title">🏭 Equipments</div>
+      <div id="equipments-list"></div>
+    </div>
+
+    <!-- CHART + DOWNLOAD -->
+    <div class="card">
+      <div class="card-title">📈 Consumption History</div>
+
+      <select id="chart-equipment" onchange="loadChart()">
+        <option value="">Select equipment to view chart...</option>
+      </select>
+
+      <!-- BOTÃO PDF -->
+      <button id="downloadReport" class="btn-download">
+        📄 Download PDF Report
+      </button>
+
+      <div id="chart" style="margin-top: 16px;"></div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+name: CI - Energy Monitor
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Test API startup
+        run: |
+          cd backend
+          python -c "from app.main import app; print('API loaded successfully!')"
+
+      - name: Build Docker image
+        run: |
+          docker build -t energy-monitor-api ./backend
